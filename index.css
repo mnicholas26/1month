@@ -20,7 +20,7 @@ body {
 }
 
 #wrapper {
-    height: 50vh;
+    height: 58vh;
     /* margin-top: 10vh; */
     margin-bottom: 20vh;
     /* width: 80vw; */
@@ -52,7 +52,7 @@ body {
     background-size: 136%;
     background-position: 47% 52%;
     transform-origin: 100% 0%;
-    transform: rotate(-4deg);
+    transform: rotate(-2.5deg);
 }
 
 #wrapper::after {
