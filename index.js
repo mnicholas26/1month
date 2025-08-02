@@ -175,7 +175,8 @@ let error = [50, 45];
 let instant = [21, 17];
 
 let wordPause = [150, 90];
-let sentencePause = [300, 100];
+let sentencePause = [300, 120];
+let linePause = [500, 250];
 let paragraphPause = [1000, 600];
 let errorPause = [800, 150];
 
@@ -210,7 +211,7 @@ async function randomClack() {
         if (inputText[textCounter] === '\n') [max, min] = instant;
         else if (textCounter < 3 || inputText[textCounter - 3] !== '.')
             [max, min] = paragraphPause;
-        else [max, min] = sentencePause;
+        else [max, min] = linePause;
     } else [max, min] = current;
 
     if (inputText.length > textCounter)
