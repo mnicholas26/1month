@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@font-face {
+    font-family: retro;
+    src: url(./Pixel\ Icons\ Compilation.ttf);
+}
+
+body {
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24 28 34);
+    color: #ebf7f1;
+    overflow: hidden;
+    --sb-track-color: #21242500;
+    --sb-thumb-color: #ebf7f1;
+    --sb-size: 14px;
+}
+
+#wrapper {
+    height: 50vh;
+    /* margin-top: 10vh; */
+    margin-bottom: 20vh;
+    /* width: 80vw; */
+    width: calc(40vw + 40vh);
+    position: relative;
+    box-shadow: 0 0 60px 20px dimgrey;
+    border-radius: 0.8em;
+    border: 12px solid #0e0e0e;
+    border-bottom-width: 36px;
+    animation: blink-shadow2 3s ease-in-out infinite;
+}
+
+@keyframes blink-shadow2 {
+    50% {
+        box-shadow: 0 0 60px 10px dimgrey;
+    }
+}
+
+#wrapper::before {
+    /* height: 165px; */
+    /* width: 260px; */
+    width: 35%;
+    aspect-ratio: 1.5758;
+    top: calc(100% + 6px);
+    left: 5em;
+    position: absolute;
+    content: '';
+    background-image: url(https://temp-image.com/ib/A1h7Wx68uX7Et4x_1754159578.jpg);
+    background-size: 136%;
+    background-position: 47% 52%;
+    transform-origin: 100% 0%;
+    transform: rotate(-4deg);
+}
+
+#wrapper::after {
+    content: '';
+    border-radius: 100%;
+    position: absolute;
+    bottom: -21px;
+    right: 3em;
+    background-color: rgb(66, 66, 248);
+    box-shadow: 0 0 6px 4px rgb(91, 91, 248);
+    height: 6px;
+    aspect-ratio: 1;
+    animation: blink-shadow 4s ease-in-out infinite;
+}
+
+@keyframes blink-shadow {
+    20% {
+        box-shadow: 0 0 6px 2px rgb(91, 91, 248);
+    }
+    40% {
+        box-shadow: 0 0 6px 4px rgb(91, 91, 248);
+    }
+}
+
+#main {
+    /* font-family: 'Delius', cursive; */
+    /* font-weight: bold; */
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-style: normal;
+    /* font-size: larger; */
+    font-size: 1.1em;
+    white-space: pre-wrap;
+    /* height: 50vh;
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+    width: 80vw; */
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    /* position: relative; */
+    /* border-radius: 0.8em; */
+    /* box-shadow: 0 0 60px 25px dimgrey; */
+    scroll-margin-block-end: 1.5em;
+}
+
+p {
+    margin: 0.5em 1em;
+}
+
+p:first-child {
+    margin-top: 2em;
+}
+
+p:last-child {
+    margin-bottom: 2em;
+}
+
+p.active::after {
+    content: '|';
+    margin-left: -3px;
+    animation: blink-caret 1s step-end infinite;
+}
+
+p.finished::after {
+    /* content: '❤'; */
+    content: 'B';
+    font-family: retro;
+    font-size: large;
+    color: red;
+    margin-left: 2px;
+    animation: blink-caret 1.6s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from,
+    to {
+        color: transparent;
+    }
+    30% {
+        color: revert-layer;
+    }
+}
+
+.scanlines {
+    overflow: hidden;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.scanlines:before,
+.scanlines:after {
+    display: block;
+    pointer-events: none;
+    content: '';
+    position: absolute;
+}
+.scanlines:before {
+    width: 100%;
+    height: 2px;
+    z-index: 2147483649;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0.75;
+    animation: scanline 9s linear infinite;
+}
+.scanlines:after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2147483648;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.3) 51%
+    );
+    background-size: 100% 4px;
+    animation: scanlines 1.5s steps(5) infinite;
+}
+
+/* ANIMATE UNIQUE SCANLINE */
+@keyframes scanline {
+    0% {
+        transform: translate3d(0, 200000%, 0);
+    }
+}
+@keyframes scanlines {
+    0% {
+        background-position: 0 50%;
+    }
+}
+/* .scanlines {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 300;
+    opacity: 0.6;
+    will-change: opacity;
+    -webkit-animation: opacity 6s linear infinite;
+    animation: opacity 6s linear infinite;
+}
+.scanlines::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.5) 51%
+    );
+    background-size: 100% 2px;
+    will-change: background, background-size;
+    -webkit-animation: scanlines 0.3s linear infinite;
+    animation: scanlines 0.3s linear infinite;
+}
+@keyframes opacity {
+    0% {
+        opacity: 0.6;
+    }
+    20% {
+        opacity: 0.3;
+    }
+    35% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    60% {
+        opacity: 0.4;
+    }
+    80% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes scanlines {
+    from {
+        background: linear-gradient(
+            to bottom,
+            transparent 50%,
+            rgba(0, 0, 0, 0.5) 51%
+        );
+        background-size: 100% 4px;
+    }
+    to {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.5) 50%,
+            transparent 51%
+        );
+        background-size: 100% 4px;
+    }
+} */
+
+::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 20px;
+    border: 4px solid #232e33;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}
+
+#vignette {
+    pointer-events: none;
+    content: '';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    box-shadow: inset 0 0 110px #00000094;
+    /* border-radius: 0.8em; */
+}
